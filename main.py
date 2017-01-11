@@ -89,12 +89,16 @@ def income(message):
     else:
         bot.reply_to(message,"ابتدا شما باید توکن خود را ثبت کنید!")
 def get_income_amount(message):
-    user_input['amount'] = message.text.encode('utf-8')
-    #wait for user message
-    msg = bot.reply_to(message, "چه توضیحی برای این درآمد دارید؟")
-    bot.register_next_step_handler(msg, get_income_text)
+    user_input['amount'] = str(message.text.encode('utf-8'))
+    #validate user input
+    if user_input['amount'].isdigit():
+        #wait for user message
+        msg = bot.reply_to(message, "چه توضیحی برای این درآمد دارید؟")
+        bot.register_next_step_handler(msg, get_income_text)
+    else:
+        bot.reply_to(message, "لطفا مقدار معتبر و به تومان وارد کنید!")
 def get_income_text(message):
-    text = message.text.encode('utf-8')
+    text = str(message.text.encode('utf-8'))
     token = user_input['token']
     amount = user_input['amount']
     #sendind data to site
@@ -125,12 +129,16 @@ def expense(message):
     else:
         bot.reply_to(message,"ابتدا شما باید توکن خود را ثبت کنید!")
 def get_expense_amount(message):
-    user_input['amount'] = message.text.encode('utf-8')
-    msg = bot.reply_to(message, "توضیح برای این خرج چی هستش؟")
-    #wait for user message
-    bot.register_next_step_handler(msg, get_expene_text)
+    user_input['amount'] = str(message.text.encode('utf-8'))
+    #validate user input
+    if user_input['amount'].isdigit():
+        msg = bot.reply_to(message, "توضیح برای این خرج چی هستش؟")
+        #wait for user message
+        bot.register_next_step_handler(msg, get_expene_text)
+    else:
+        bot.reply_to(message, "لطفا مقدار معتبر و به تومان وارد کنید!")
 def get_expene_text(message):
-    text = message.text.encode('utf-8')
+    text = str(message.text.encode('utf-8'))
     token = user_input['token']
     amount = user_input['amount']
     #sendind data to site
