@@ -1,7 +1,7 @@
 # Bestoon Telegram Client
 A simple Telegram bot client for bestoon.ir [Bestoon Project Source Code](https://github.com/jadijadi/bestoon)
 
-You can use this bot bot in Telegram with [@bestoonirbot](https://telegram.me/bestoonirbot) id! its up and running :) 
+You can use this bot bot in Telegram with [@bestoonirbot](https://telegram.me/bestoonirbot) id! its up and running :)
 
 ## Install
 * Install this python library:
@@ -10,9 +10,9 @@ You can use this bot bot in Telegram with [@bestoonirbot](https://telegram.me/be
 * Change your bot token with `YOUR_TOKEN_HERE` in `config.py`
 * Run code using `python main.py`
 
-## TODO 
+## TODO
 - [ ] Add new feautures of Bestoon
 - [ ] Validate user input!
-- [ ] Markdown bot response
+~~- [ ] Markdown bot response~~ (Cant Markdown Persian words in Telegram Markdown! maybe in future :) )
 - [ ] Beautification code and response!
-- [ ] Fix some bugs! 
+- [ ] Fix some bugs!
