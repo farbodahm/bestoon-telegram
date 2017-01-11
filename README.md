@@ -13,6 +13,8 @@ You can use this bot bot in Telegram with [@bestoonirbot](https://telegram.me/be
 ## TODO
 - [ ] Add new feautures of Bestoon
 - [ ] Validate user input!
-~~- [ ] Markdown bot response~~ (Cant Markdown Persian words in Telegram Markdown! maybe in future :) )
+
+~~- [ ] Markdown bot response~~ (Cant Markdown Persian words in Telegram Markdown!)
+
 - [ ] Beautification code and response!
 - [ ] Fix some bugs!
