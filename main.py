@@ -19,6 +19,7 @@ user_input = {}
 
 @bot.message_handler(commands=['start', 'help'])
 def send_welcome(message):
+    bot.send_chat_action(message.from_user.id, 'typing')
     bot.reply_to(message, "این ربات یه کلاینت برای سایت bestoon.ir هستش \
 که میتونید باهاش دخل و خرجتون رو ذخیره کنید.\
  البته شدیدا زیر توسعه هستش و داره بهتر و بهتر میشه.\
@@ -38,6 +39,7 @@ http://bestoon.ir/accounts/register/ \
 @bot.message_handler(commands=['token'])
 def wait_for_token(message):
     #wait for user response
+    bot.send_chat_action(message.from_user.id, 'typing')
     msg = bot.reply_to(message, "لطفا توکن ۴۸ رقمی خود را که از سایت دریافت کرده اید وارد نمایید:")
     bot.register_next_step_handler(msg, register_token)
 def register_token(message):
@@ -57,6 +59,7 @@ def register_token(message):
         if user_token_db == None:
             command.execute("INSERT INTO user ('uid', 'token') VALUES ('{}', '{}')".format(uid, user_token))
             dbconnect.commit()
+            bot.send_chat_action(message.from_user.id, 'typing')
             bot.reply_to(message, "توکن شما با موفقیت ذخیره شد.\
 اکنون میتوانید دخل و خرج خود را حساب کنید\
 \n \
@@ -84,6 +87,7 @@ def income(message):
     if user_token != None:
         user_input['token'] = user_token
         #wait for user amount
+        bot.send_chat_action(message.from_user.id, 'typing')
         msg = bot.reply_to(message,"چند تومان درآمد داشتید؟")
         bot.register_next_step_handler(msg, get_income_amount)
     else:
@@ -124,6 +128,7 @@ def expense(message):
     if user_token != None:
         user_input['token'] = user_token
         #wait for user amount
+
         msg = bot.reply_to(message,"چند تومان خرج کردید؟")
         bot.register_next_step_handler(msg, get_expense_amount)
     else:
@@ -153,6 +158,7 @@ def get_expene_text(message):
 @bot.message_handler(commands=['stat'])
 def getstat(message):
     uid = str(message.from_user.id)
+    bot.send_chat_action(message.from_user.id, 'typing')
     #get user token from DB
     cursor = command.execute("SELECT token from user WHERE uid='{}'".format(uid))
     for row in cursor:
